@@ -1,100 +1,168 @@
-# React homework template
+## 1 - Профіль соціальної мережі
+Необхідно створити компонент <Profile>, за допомогою якого ми могли б відображати інформацію про користувача соціальної мережі. Дані про користувача лежать у файлі user.json.
 
-Цей проєкт був створений за допомогою [Create React App](https://github.com/facebook/create-react-app). Щоб ознайомитися та налаштувати додаткові функції [звернися до документації](https://facebook.github.io/create-react-app/docs/getting-started).
+component preview
+Опис компонента <Profile>
+Компонент повинен приймати кілька пропсів з інформацією про користувача:
 
-## Створення репозиторію за шаблоном
+username — ім'я користувача
+tag — тег в соціальній мережі без @
+location — місто і країна
+avatar — посилання на зображення
+stats — об'єкт з інформацією про активності
+Компонент повинен створювати DOM елемент наступної структури.
 
-Використовуй цей репозиторій GoIT як шаблон для створення репозиторію
-свого проєкту. Для цього натисни на кнопку `«Use this template»` та обери опцію
-`«Create a new repository»`, як показано на зображенні нижче.
+<div class="profile">
+  <div class="description">
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png"
+      alt="User avatar"
+      class="avatar"
+    />
+    <p class="name">Petra Marica</p>
+    <p class="tag">@pmarica</p>
+    <p class="location">Salvador, Brasil</p>
+  </div>
 
-![Creating repo from a template step 1](./assets/template-step-1.png)
+  <ul class="stats">
+    <li>
+      <span class="label">Followers</span>
+      <span class="quantity">1000</span>
+    </li>
+    <li>
+      <span class="label">Views</span>
+      <span class="quantity">2000</span>
+    </li>
+    <li>
+      <span class="label">Likes</span>
+      <span class="quantity">3000</span>
+    </li>
+  </ul>
+</div>
 
-На наступному кроці відкриється сторінка створення нового репозиторию. Заповни поле
-назви та переконайся що репозиторій публічний, після чого натисни кнопку
-`«Create repository from template»`.
+Приклад використання
+import user from 'path/to/user.json;
 
-![Creating repo from a template step 2](./assets/template-step-2.png)
+<Profile
+  username={user.username}
+  tag={user.tag}
+  location={user.location}
+  avatar={user.avatar}
+  stats={user.stats}
+/>
 
-Після створення репозиторію необхідно перейти в налаштування
- на вкладку `Settings` > `Actions` > `General` як показано на зображенні.
+2- Секція статистики
+Створити компонент <Statistics>, який би відображав статистику з переданих пропсів. Наприклад, завантаження у хмару за типом файлів, відвідування веб-сторінки користувачами різних країн, фінансові витрати тощо. Дані про статистику лежать у файлі data.json.
 
-![Settings GitHub Actions permissions step 1](./assets/gh-actions-perm-1.png)
+component preview
+Опис компонента <Statistics>
+Компонент повинен приймати два пропи title і stats, в яких вказується заголовок та об'єкт статистики.
 
-Проскроливши сторінку до кінця, в секції `«Workflow permissions»` обери опцію
- `«Read and write permissions»`. Це необхідно для автоматизації процесу деплою проєкту.
+title – не обов'язковий, і якщо він не переданий, не повинна рендеритись розмітка заголовка <h2>.
+stats – масив об'єктів, що містять інформацію про елемент статистики. Може мати довільну кількість елементів.
+Колір фону елемента статистики в оформленні можна пропустити або створити функцію для генерації випадкового кольору.
+Компонент повинен створювати DOM елемент наступної структури.
 
-![Settings GitHub Actions permissions step 2](./assets/gh-actions-perm-2.png)
+<section class="statistics">
+  <h2 class="title">Upload stats</h2>
 
-Тепер у тебе є особистий репозиторій проєкту із файлом шаблону та структура тек. Після 
-цього ти можеш працювати з ним, як з будь-яким іншим особистим репозиторієм.
+  <ul class="stat-list">
+    <li class="item">
+      <span class="label">.docx</span>
+      <span class="percentage">4%</span>
+    </li>
+    <li class="item">
+      <span class="label">.mp3</span>
+      <span class="percentage">14%</span>
+    </li>
+    <li class="item">
+      <span class="label">.pdf</span>
+      <span class="percentage">41%</span>
+    </li>
+    <li class="item">
+      <span class="label">.mp4</span>
+      <span class="percentage">12%</span>
+    </li>
+  </ul>
+</section>
 
-## Підготовка до роботи
+Приклад використання
+import data from '/path/to/data.json';
 
-1. Переконайся, що на комп'ютері встановлено LTS-версію Node.js.
-   [Скачай та встанови](https://nodejs.org/en/) її якщо необхідно.
-2. Встанови залежності проєкту в терміналі командою `npm install`.
-3. Запусти режим розробки, виконавши команду `npm start`.
-4. Перейди в браузері за адресою [http://localhost:3000](http://localhost:3000).  Ця сторінка автоматично перезавантажуватиметься після збереження змін у файлах проєкту.
+<Statistics title="Upload stats" stats={data} />
+<Statistics stats={data} />
 
-## Деплой
+3 - Список друзів
+Необхідно створити компонент <FriendList>, за допомогою якого ми могли б відображати інформацію про друзів користувача. Інформація про друзів зберігається у файлі friends.json.
 
-Продакшн версія проєкту буде автоматично проходити лінтинг, збиратися та деплоїтись на GitHub Pages, у гілку `gh-pages`, щоразу коли оновлюється гілка main. Наприклад, після прямого пушу або прийнятого пул-ріквесту. Для цього необхідно у файлі `package.json` відредагувати поле `homepage`, замінивши `your_username` та `your_repo_name` на свої, і відправити зміни на GitHub.
+component preview
+Опис компонента <FriendList>
+Компонент повинен приймати один проп friends – масив об'єктів друзів.
 
-```json
-"homepage": "https://your_username.github.io/your_repo_name/"
-```
+Компонент повинен створювати DOM наступної структури.
 
-Далі необхідно зайти в налаштування GitHub-репозиторію (`Settings` > `Pages`) та
-виставити роздачу продакшн версії файлів з теки `/root` гілки `gh-pages`, якщо
-це не було зроблено автоматично.
+<ul class="friend-list">
+  <!-- Довільна кіл-сть FriendListItem -->
+</ul>
 
-![GitHub Pages settings](./assets/repo-settings.png)
+Опис компонента <FriendListItem>
+Компонент повинен приймати кілька пропів:
 
-### Статус деплою
+avatar - посилання на аватар
+name - ім'я друга
+isOnline - буль, що сигналізує про стан друга: в мережі або ні.
+Залежно від пропа isOnline, повинен змінюватися колір фону span.status. Це можна зробити за допомогою різних CSS-класів або Styled Components.
 
-Статус деплою останього комміту відображається іконкою біля його ідентифікатора.
+Компонент повинен створювати DOM наступної структури.
 
-- **Жовтий колір** - виконується складання та деплой проєкту.
-- **Зелений колір** - деплой завершився успішно.
-- **Червоний колір** - під час лінтингу, складання або деплою сталася помилка.
+<li class="item">
+  <span class="status"></span>
+  <img class="avatar" src="" alt="User avatar" width="48" />
+  <p class="name"></p>
+</li>
 
-Більш детальну інформацію про статус можна переглянути натиснувши на іконку, і в
-вікні, що випадає, перейти за посиланням `Details`.
+Приклад використання
+import friends from 'path/to/friends.json';
 
-![Deployment status](./assets/deploy-status.png)
+<FriendList friends={friends} />;
 
-### Жива сторінка
+4 - Історія транзакцій
+Необхідно створити компонент історії транзакцій в особистому кабінеті інтернет-банку.
 
-Через якийсь час, зазвичай кілька хвилин, живу сторінку можна буде подивитися
-за адресою, вказаною у відредагованій властивості `homepage`. Наприклад, ось
-посилання на живу версію для цього репозиторію
-[https://goitacademy.github.io/react-homework-template](https://goitacademy.github.io/react-homework-template).
+component preview
+Дані для списку доступні у форматі JSON у файлі transactions.json. Це масив об'єктів, де кожен об'єкт описує одну транзакцію з наступними властивостями:
 
-Якщо відкриється порожня сторінка, переконайся, що у вкладці `Console` немає помилок,
-пов'язаних з неправильними шляхами до CSS та JS файлів проєкту (**404**). Скоріш за
-все, у тебе неправильне значення властивості `homepage` в файлі `package.json`.
+id — унікальний ідентифікатор транзакції
+type — тип транзакції
+amount - сума транзакції
+currency - тип валюти
+Опис компонента <TransactionHistory>
+Необхідно створити компонент <TransactionHistory>, який приймає один проп items – масив об'єктів транзакцій з transactions.json. Компонент створює розмітку таблиці. Кожна транзакція – це рядок таблиці. У прикладі наведена розмітка двох транзакцій.
 
-### Маршрутизація
+<table class="transaction-history">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Currency</th>
+    </tr>
+  </thead>
 
-Якщо застосунок використовує бібліотеку `react-router-dom` для маршрутизації,
-необхідно додатково налаштувати компонент `<BrowserRouter>`, передавши в пропі
-`basename` точну назву твого репозиторію. Слеш на початку рядка обов'язковий.
+  <tbody>
+    <tr>
+      <td>Invoice</td>
+      <td>125</td>
+      <td>USD</td>
+    </tr>
+    <tr>
+      <td>Withdrawal</td>
+      <td>85</td>
+      <td>USD</td>
+    </tr>
+  </tbody>
+</table>
 
-```jsx
-<BrowserRouter basename="/your_repo_name">
-  <App />
-</BrowserRouter>
-```
+Приклад використання
+import transactions from 'path/to/transactions.json';
 
-## Як це працює
-
-![How it works](./assets/how-it-works.png)
-
-1. Після кожного пушу у гілку `main` GitHub-репозиторію, запускається спеціальний
-    скрипт (GitHub Action) із файлу `.github/workflows/deploy.yml`.
-2. Усі файли репозиторію копіюються на сервер, де проєкт ініціалізується та
-    проходить лінтинг та збирання перед деплоєм.
-3. Якщо всі кроки пройшли успішно, зібрана продакшн версія файлів проєкту
-    відправляється у гілку `gh-pages`. В іншому випадку, у логу виконання
-    скрипту буде вказано в чому проблема.
+<TransactionHistory items={transactions} />;
