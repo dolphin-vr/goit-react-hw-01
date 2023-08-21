@@ -7,13 +7,13 @@ export const Wrapper = styled.div`
    display: flex;
    flex-direction: column;
    align-items: center;
-   padding-top: ${props => props.theme.spacing(4)};
+   /* padding-top: ${props => props.theme.spacing(4)}; */
    /* padding: ${props => props.theme.spacing(5)}; */
    background-color: ${props => props.theme.colors.white};
 `
 
 export const Title = styled.h2`
-   margin: 0 auto ${props => props.theme.spacing(3)};
+   margin: ${props => props.theme.spacing(4)} auto ${props => props.theme.spacing(3)};
    font-size: 34px;
 `
 
