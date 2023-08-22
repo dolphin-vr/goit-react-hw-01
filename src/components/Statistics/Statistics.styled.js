@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-   margin: 0 auto;
+   margin: 0 auto ${props => props.theme.spacing(8)};
    width: 400px;
    border-radius: ${props => props.theme.radii.md};
    display: flex;
@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 
 export const Title = styled.h2`
    margin: ${props => props.theme.spacing(4)} auto ${props => props.theme.spacing(3)};
-   font-size: 34px;
+   font-size: 32px;
 `
 
 export const List = styled.ul`

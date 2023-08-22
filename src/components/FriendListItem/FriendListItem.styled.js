@@ -12,7 +12,6 @@ export const ListItem = styled.li`
    align-items: center;
    gap: ${props => props.theme.spacing(4)};
    padding: ${props => props.theme.spacing(2)} ${props => props.theme.spacing(4)};
-   background-color: ${props => props.theme.colors.white};
    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.7);
 `
 

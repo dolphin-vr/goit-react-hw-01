@@ -4,7 +4,6 @@ export const Activiti = styled.p`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   gap: ${props => props.theme.spacing(2)};
   margin: 0;  
   padding: ${props => props.theme.spacing(4)};
