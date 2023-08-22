@@ -6,13 +6,16 @@ import './index.css';
 
 const theme = {
   colors: {
+    background: "#efefef",
     black: '#212121',
     white: '#fff',
     lightgrey: 'lightgrey',
+    midgrey: '#a9a9a9',
     grey: 'grey',
     red: 'red',
     green: 'green',
     orange: 'orange',
+    deepsky: "#00bfff",
   },
   radii: {
     sm: '4px',
